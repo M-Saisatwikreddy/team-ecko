@@ -8,6 +8,7 @@ import morgan from "morgan";
 
 import authRoutes from "./routes/auth.routes.js";
 import vehicleRoutes from "./routes/vehicle.routes.js";
+import driverRoutes from "./routes/driver.routes.js";
 
 dotenv.config();
 
@@ -45,5 +46,6 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/vehicles", vehicleRoutes);
+app.use("/api/drivers", driverRoutes);
 
 export default app;
