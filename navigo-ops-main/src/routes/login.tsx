@@ -6,13 +6,17 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import {
   ArrowRight,
-  Building2,
-  CheckCircle2,
+  BusFront,
   Eye,
   EyeOff,
   Loader2,
   Lock,
   Mail,
+  MapPinned,
+  Navigation,
+  Route as RouteIcon,
+  ShieldCheck,
+  Truck,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -93,89 +97,140 @@ function LoginPage() {
     }
   };
 
-  const features = [
-    "Live vehicle tracking and route monitoring",
-    "Driver safety and incident management",
-    "Maintenance and compliance alerts",
-    "Fuel, expense, and performance analytics",
-  ];
-
   return (
     <main className="grid min-h-screen bg-slate-50 lg:grid-cols-2">
-      {/* Left information panel */}
+      {/* Left panel */}
       <section className="relative hidden min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 p-10 text-white lg:flex lg:flex-col lg:justify-between xl:p-14">
-        {/* Decorative background shapes */}
-        <div className="pointer-events-none absolute -left-32 top-28 h-80 w-80 rounded-full bg-blue-500/15 blur-3xl" />
-        <div className="pointer-events-none absolute -right-20 bottom-10 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
-        <div className="pointer-events-none absolute right-16 top-24 h-32 w-32 rounded-full border border-white/5" />
-        <div className="pointer-events-none absolute bottom-32 left-20 h-20 w-20 rounded-full border border-blue-400/10" />
+        {/* Decorative background elements */}
+        <div className="pointer-events-none absolute -left-32 top-24 h-96 w-96 rounded-full bg-blue-500/15 blur-3xl" />
+        <div className="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-cyan-400/10 blur-3xl" />
+        <div className="pointer-events-none absolute right-20 top-20 h-36 w-36 rounded-full border border-white/5" />
+        <div className="pointer-events-none absolute bottom-40 left-24 h-24 w-24 rounded-full border border-blue-400/10" />
 
         {/* Brand */}
         <div className="relative z-10 flex items-center gap-3">
-          <div className="grid h-11 w-11 place-items-center rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-950/30">
-            <Building2 className="h-5 w-5" />
+          <div className="grid h-12 w-12 place-items-center rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-950/40">
+            <Navigation className="h-6 w-6" />
           </div>
 
           <div>
-            <div className="text-base font-semibold tracking-tight">
+            <div className="text-xl font-bold tracking-tight">
               Beayrik
             </div>
 
-            <div className="mt-0.5 text-[10px] uppercase tracking-[0.2em] text-slate-400">
+            <div className="mt-0.5 text-[11px] uppercase tracking-[0.22em] text-slate-400">
               Enterprise Fleet ERP
             </div>
           </div>
         </div>
 
-        {/* Main information */}
-        <div className="relative z-10 max-w-lg">
-          <div className="mb-5 inline-flex items-center rounded-full border border-blue-400/20 bg-blue-400/10 px-3 py-1 text-xs font-medium text-blue-200">
-            Smart fleet operations platform
+        {/* Main hero content */}
+        <div className="relative z-10 max-w-2xl">
+          <div className="mb-5 inline-flex items-center rounded-full border border-blue-400/20 bg-blue-400/10 px-4 py-1.5 text-xs font-medium text-blue-200">
+            Smart transport operations platform
           </div>
 
-          <h1 className="max-w-md text-4xl font-bold leading-tight tracking-tight xl:text-5xl">
-            Smarter transport operations, all in one place.
+          <h1 className="max-w-xl text-5xl font-bold leading-[1.08] tracking-tight xl:text-6xl">
+            Move smarter.
+            <span className="mt-1 block text-blue-400">
+              Operate better.
+            </span>
           </h1>
 
-          <p className="mt-5 max-w-md text-sm leading-6 text-slate-300 xl:text-base">
-            Track vehicles, manage drivers, monitor routes, and respond to
-            incidents in real time through one connected workspace.
+          <p className="mt-6 max-w-xl text-base leading-7 text-slate-300 xl:text-lg">
+            A unified platform for tracking vehicles, managing drivers,
+            monitoring routes, and handling incidents in real time.
           </p>
 
-          <div className="mt-8 space-y-4">
-            {features.map((feature) => (
-              <div
-                key={feature}
-                className="flex items-start gap-3 text-sm text-slate-200"
-              >
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-blue-400" />
-                <span>{feature}</span>
-              </div>
-            ))}
+          {/* Vehicle highlight */}
+          <div className="mt-8 flex max-w-xl items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+            <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl border border-blue-400/20 bg-blue-400/10">
+              <Truck className="h-8 w-8 text-blue-400" />
+            </div>
+
+            <div>
+              <p className="text-sm font-semibold text-white">
+                Connected transport network
+              </p>
+
+              <p className="mt-1 text-xs leading-5 text-slate-400">
+                Vehicles, routes, drivers, and operations connected in one
+                intelligent system.
+              </p>
+            </div>
+          </div>
+
+          {/* Feature cards */}
+          <div className="mt-6 grid max-w-xl grid-cols-2 gap-4">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/10">
+              <BusFront className="h-6 w-6 text-blue-400" />
+
+              <h3 className="mt-3 text-sm font-semibold text-white">
+                Fleet Tracking
+              </h3>
+
+              <p className="mt-1 text-xs leading-5 text-slate-400">
+                Monitor vehicles and fleet movement in real time.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/10">
+              <MapPinned className="h-6 w-6 text-cyan-400" />
+
+              <h3 className="mt-3 text-sm font-semibold text-white">
+                Route Monitoring
+              </h3>
+
+              <p className="mt-1 text-xs leading-5 text-slate-400">
+                Track routes, stops, schedules, and operational delays.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/10">
+              <ShieldCheck className="h-6 w-6 text-emerald-400" />
+
+              <h3 className="mt-3 text-sm font-semibold text-white">
+                Driver Safety
+              </h3>
+
+              <p className="mt-1 text-xs leading-5 text-slate-400">
+                Monitor incidents, safety alerts, and compliance.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/10">
+              <RouteIcon className="h-6 w-6 text-violet-400" />
+
+              <h3 className="mt-3 text-sm font-semibold text-white">
+                Smart Dispatch
+              </h3>
+
+              <p className="mt-1 text-xs leading-5 text-slate-400">
+                Coordinate routes, vehicles, and assignments efficiently.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Footer */}
         <div className="relative z-10 text-xs text-slate-500">
           © {new Date().getFullYear()} Beayrik. All rights reserved.
         </div>
       </section>
 
-      {/* Right login section */}
+      {/* Right panel */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-5 py-10 sm:px-8 lg:px-12">
-        {/* Mobile background decorations */}
-        <div className="pointer-events-none absolute -right-24 top-0 h-64 w-64 rounded-full bg-blue-100/70 blur-3xl" />
-        <div className="pointer-events-none absolute -left-24 bottom-0 h-64 w-64 rounded-full bg-slate-200/70 blur-3xl" />
+        <div className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full bg-blue-100/70 blur-3xl" />
+        <div className="pointer-events-none absolute -left-24 bottom-0 h-72 w-72 rounded-full bg-slate-200/70 blur-3xl" />
 
         <div className="relative z-10 w-full max-w-md">
           {/* Mobile brand */}
           <div className="mb-8 flex items-center gap-3 lg:hidden">
-            <div className="grid h-11 w-11 place-items-center rounded-xl bg-blue-600 text-white shadow-md">
-              <Building2 className="h-5 w-5" />
+            <div className="grid h-12 w-12 place-items-center rounded-2xl bg-blue-600 text-white shadow-md">
+              <Navigation className="h-6 w-6" />
             </div>
 
             <div>
-              <div className="text-base font-semibold text-slate-900">
+              <div className="text-lg font-bold text-slate-900">
                 Beayrik
               </div>
 
@@ -186,18 +241,18 @@ function LoginPage() {
           </div>
 
           {/* Login card */}
-          <div className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-xl shadow-slate-200/60 sm:p-8">
-            <div className="mb-7">
+          <div className="rounded-3xl border border-slate-200/80 bg-white p-6 shadow-2xl shadow-slate-200/70 sm:p-8">
+            <div className="mb-8">
               <div className="mb-3 inline-flex rounded-lg bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
                 Secure access
               </div>
 
-              <h2 className="text-3xl font-bold tracking-tight text-slate-900">
+              <h2 className="text-4xl font-bold tracking-tight text-slate-900">
                 Welcome back
               </h2>
 
-              <p className="mt-2 text-sm leading-6 text-slate-500">
-                Sign in to access your fleet operations workspace.
+              <p className="mt-3 text-base leading-6 text-slate-500">
+                Sign in to continue to your transport operations dashboard.
               </p>
             </div>
 
@@ -208,7 +263,10 @@ function LoginPage() {
             >
               {/* Email */}
               <div className="flex flex-col gap-2">
-                <Label htmlFor="email" className="text-sm text-slate-700">
+                <Label
+                  htmlFor="email"
+                  className="text-sm font-medium text-slate-700"
+                >
                   Email address
                 </Label>
 
@@ -220,7 +278,7 @@ function LoginPage() {
                     type="email"
                     autoComplete="email"
                     placeholder="you@company.com"
-                    className="h-11 rounded-xl border-slate-200 bg-slate-50 pl-10 transition focus:bg-white"
+                    className="h-12 rounded-xl border-slate-200 bg-slate-50 pl-10 transition focus:bg-white"
                     aria-invalid={Boolean(form.formState.errors.email)}
                     {...form.register("email")}
                   />
@@ -238,7 +296,7 @@ function LoginPage() {
                 <div className="flex items-center justify-between">
                   <Label
                     htmlFor="password"
-                    className="text-sm text-slate-700"
+                    className="text-sm font-medium text-slate-700"
                   >
                     Password
                   </Label>
@@ -264,7 +322,7 @@ function LoginPage() {
                     type={showPassword ? "text" : "password"}
                     autoComplete="current-password"
                     placeholder="Enter your password"
-                    className="h-11 rounded-xl border-slate-200 bg-slate-50 pl-10 pr-11 transition focus:bg-white"
+                    className="h-12 rounded-xl border-slate-200 bg-slate-50 pl-10 pr-11 transition focus:bg-white"
                     aria-invalid={Boolean(
                       form.formState.errors.password,
                     )}
@@ -296,7 +354,7 @@ function LoginPage() {
 
               {/* Role */}
               <div className="flex flex-col gap-2">
-                <Label className="text-sm text-slate-700">
+                <Label className="text-sm font-medium text-slate-700">
                   Select your role
                 </Label>
 
@@ -308,7 +366,7 @@ function LoginPage() {
                     })
                   }
                 >
-                  <SelectTrigger className="h-11 rounded-xl border-slate-200 bg-slate-50">
+                  <SelectTrigger className="h-12 rounded-xl border-slate-200 bg-slate-50">
                     <SelectValue placeholder="Select a role" />
                   </SelectTrigger>
 
@@ -329,7 +387,9 @@ function LoginPage() {
                       Financial Analyst
                     </SelectItem>
 
-                    <SelectItem value="Driver">Driver</SelectItem>
+                    <SelectItem value="Driver">
+                      Driver
+                    </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -346,11 +406,11 @@ function LoginPage() {
                 <span>Remember me on this device</span>
               </label>
 
-              {/* Submit button */}
+              {/* Submit */}
               <Button
                 type="submit"
                 disabled={form.formState.isSubmitting}
-                className="h-11 w-full rounded-xl bg-blue-600 font-semibold text-white shadow-md shadow-blue-200 transition hover:bg-blue-700 hover:shadow-lg disabled:cursor-not-allowed"
+                className="h-12 w-full rounded-xl bg-blue-600 font-semibold text-white shadow-md shadow-blue-200 transition hover:bg-blue-700 hover:shadow-lg active:scale-[0.99] disabled:cursor-not-allowed"
               >
                 {form.formState.isSubmitting ? (
                   <>
@@ -359,7 +419,7 @@ function LoginPage() {
                   </>
                 ) : (
                   <>
-                    Sign in
+                    Continue to dashboard
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </>
                 )}
