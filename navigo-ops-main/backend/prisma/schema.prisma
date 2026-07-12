@@ -1,0 +1,182 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  fullName  String
+  email     String   @unique
+  password  String
+  role      UserRole
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Vehicle {
+
+  id               Int             @id @default(autoincrement())
+
+  registrationNo   String          @unique
+
+  vehicleName      String
+
+  vehicleType      String
+
+  maxLoadCapacity  Float
+
+  odometer         Float
+
+  acquisitionCost  Float
+
+  status           VehicleStatus   @default(AVAILABLE)
+
+  isDeleted        Boolean         @default(false)
+
+  deletedAt        DateTime?
+
+  createdAt        DateTime        @default(now())
+
+  updatedAt        DateTime        @updatedAt
+
+  trips            Trip[]
+
+  maintenanceLogs  Maintenance[]
+
+  fuelLogs         FuelLog[]
+
+  expenses         Expense[]
+}
+model Driver {
+
+  id                Int             @id @default(autoincrement())
+
+  fullName          String
+
+  licenseNumber     String          @unique
+
+  licenseCategory   String
+
+  expiryDate        DateTime
+
+  phone             String
+
+  safetyScore       Float           @default(100)
+
+  status            DriverStatus    @default(AVAILABLE)
+
+  isDeleted         Boolean         @default(false)
+
+  deletedAt         DateTime?
+
+  createdAt         DateTime        @default(now())
+
+  updatedAt         DateTime        @updatedAt
+
+  trips             Trip[]
+
+}
+
+model Trip {
+  id              Int        @id @default(autoincrement())
+  source          String
+  destination     String
+  cargoWeight     Float
+  plannedDistance Float
+  revenue         Float?
+  status          TripStatus
+  startDate       DateTime?
+  endDate         DateTime?
+  vehicleId       Int
+  driverId        Int
+  createdAt       DateTime   @default(now())
+  driver          Driver     @relation(fields: [driverId], references: [id])
+  vehicle         Vehicle    @relation(fields: [vehicleId], references: [id])
+}
+
+model Maintenance {
+  id        Int               @id @default(autoincrement())
+  issue     String
+  cost      Float
+  status    MaintenanceStatus
+  openedAt  DateTime          @default(now())
+  closedAt  DateTime?
+  vehicleId Int
+  vehicle   Vehicle           @relation(fields: [vehicleId], references: [id])
+}
+
+model FuelLog {
+  id        Int      @id @default(autoincrement())
+  liters    Float
+  cost      Float
+  mileage   Float
+  filledAt  DateTime @default(now())
+  vehicleId Int
+  vehicle   Vehicle  @relation(fields: [vehicleId], references: [id])
+}
+
+model Expense {
+  id          Int      @id @default(autoincrement())
+  category    String
+  amount      Float
+  remarks     String?
+  expenseDate DateTime @default(now())
+  vehicleId   Int
+  vehicle     Vehicle  @relation(fields: [vehicleId], references: [id])
+}
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  title     String
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model AuditLog {
+  id          Int      @id @default(autoincrement())
+  module      String
+  action      String
+  performedBy String
+  createdAt   DateTime @default(now())
+}
+
+enum UserRole {
+  ADMIN
+  FLEET_MANAGER
+  DRIVER
+  SAFETY_OFFICER
+  FINANCIAL_ANALYST
+}
+
+enum VehicleStatus {
+  AVAILABLE
+  ON_TRIP
+  IN_SHOP
+  RETIRED
+}
+
+enum DriverStatus {
+  AVAILABLE
+  ON_TRIP
+  OFF_DUTY
+  SUSPENDED
+}
+
+enum TripStatus {
+  DRAFT
+  DISPATCHED
+  COMPLETED
+  CANCELLED
+}
+
+enum MaintenanceStatus {
+  OPEN
+  IN_PROGRESS
+  COMPLETED
+}
