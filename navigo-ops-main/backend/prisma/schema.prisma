@@ -19,22 +19,39 @@ model User {
 }
 
 model Vehicle {
-  id              Int           @id @default(autoincrement())
-  registrationNo  String        @unique
-  vehicleName     String
-  vehicleType     String
-  maxLoadCapacity Float
-  odometer        Float
-  acquisitionCost Float
-  status          VehicleStatus
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
-  expenses        Expense[]
-  fuelLogs        FuelLog[]
-  maintenanceLogs Maintenance[]
-  trips           Trip[]
-}
 
+  id               Int             @id @default(autoincrement())
+
+  registrationNo   String          @unique
+
+  vehicleName      String
+
+  vehicleType      String
+
+  maxLoadCapacity  Float
+
+  odometer         Float
+
+  acquisitionCost  Float
+
+  status           VehicleStatus   @default(AVAILABLE)
+
+  isDeleted        Boolean         @default(false)
+
+  deletedAt        DateTime?
+
+  createdAt        DateTime        @default(now())
+
+  updatedAt        DateTime        @updatedAt
+
+  trips            Trip[]
+
+  maintenanceLogs  Maintenance[]
+
+  fuelLogs         FuelLog[]
+
+  expenses         Expense[]
+}
 model Driver {
   id              Int          @id @default(autoincrement())
   fullName        String

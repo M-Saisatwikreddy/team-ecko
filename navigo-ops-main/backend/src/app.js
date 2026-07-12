@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 
 import authRoutes from "./routes/auth.routes.js";
+import vehicleRoutes from "./routes/vehicle.routes.js";
 
 dotenv.config();
 
@@ -43,5 +44,6 @@ app.get("/", (req, res) => {
 */
 
 app.use("/api/auth", authRoutes);
+app.use("/api/vehicles", vehicleRoutes);
 
 export default app;
