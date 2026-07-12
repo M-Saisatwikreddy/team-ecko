@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Vehicle" ADD COLUMN     "deletedAt" TIMESTAMP(3),
+ADD COLUMN     "isDeleted" BOOLEAN NOT NULL DEFAULT false,
+ALTER COLUMN "status" SET DEFAULT 'AVAILABLE';

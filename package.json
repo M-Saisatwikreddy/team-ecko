@@ -1,0 +1,20 @@
+{
+  "name": "navigo-ops",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Fleet operations app with a TanStack frontend and Express/Prisma backend.",
+  "scripts": {
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "start:backend": "npm --prefix backend start",
+    "lint:frontend": "npm --prefix frontend run lint",
+    "prisma:generate": "npm --prefix backend run prisma:generate",
+    "prisma:migrate": "npm --prefix backend run prisma:migrate",
+    "seed": "npm --prefix backend run seed"
+  },
+  "workspaces": [
+    "frontend",
+    "backend"
+  ]
+}

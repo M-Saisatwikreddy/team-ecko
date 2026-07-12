@@ -1,0 +1,12 @@
+**/node_modules
+**/dist
+**/.tanstack
+**/.vite
+**/.nitro
+**/.output
+**/.vinxi
+**/logs
+**/uploads
+backend/.env
+navigo-ops-main
+.git

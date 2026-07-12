@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "Driver" ADD COLUMN     "deletedAt" TIMESTAMP(3),
+ADD COLUMN     "isDeleted" BOOLEAN NOT NULL DEFAULT false,
+ALTER COLUMN "safetyScore" SET DEFAULT 100,
+ALTER COLUMN "status" SET DEFAULT 'AVAILABLE';
