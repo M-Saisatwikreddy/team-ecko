@@ -335,7 +335,7 @@ npm run dev
 
 # 👨‍💻 Team
 
-Developed as part of the **Odoo Hiring Hackathon**.
+Developed as part of the **Odoo Hackathon**.
 
 Focus Areas:
 
