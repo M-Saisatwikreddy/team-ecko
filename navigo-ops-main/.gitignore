@@ -30,3 +30,6 @@ backend/prisma/migrations/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Git line-ending normalization metadata
+.gitattributes
